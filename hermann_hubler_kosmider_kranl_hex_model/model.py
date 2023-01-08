@@ -10,7 +10,7 @@ class Model:
     def __init__(self):
         self.g = HexGame(7)
         self.n1 = NNet(self.g)
-        self.n1.load_checkpoint('./hermann_hubler_kosmider_kranl_hex_model/7x7/', 'best.pth.tar')
+        self.n1.load_checkpoint('./hermann_hubler_kosmider_kranl_hex_model/7x7/', 'best_7x7_2000iter.pth.tar')
         self.args1 = dotdict({'numMCTSSims': 25, 'cpuct': 1.0})
         self.mcts1 = MCTS(self.g, self.n1, self.args1)
         self.n1p = lambda x, player: np.argmax(self.mcts1.getActionProb(x, player, temp=0))
